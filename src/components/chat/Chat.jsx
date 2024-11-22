@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './chat.css'
 import EmojiPicker from 'emoji-picker-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,6 +14,11 @@ export const Chat = () => {
 
   const [openEmoji, setOpenEmoji] = useState(false)
   const [textBar, setTextBar] = useState('')
+  const endRef = useRef(null)
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({behavious: "smooth"})
+  }, [])
 
   const handleEmojiClick = (e) => {
     setTextBar((prev)=>prev + e.emoji)
@@ -82,6 +87,7 @@ export const Chat = () => {
             <span>1 min ago</span>
           </div>
         </div>
+        <div ref={endRef}></div>
       </div>
 
       <div className="bottom">
