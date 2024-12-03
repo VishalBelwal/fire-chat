@@ -1,16 +1,27 @@
-import { Chat } from './components/chat/Chat'
-import { SideBar } from './components/sidebar/SideBar'
-import { UserDetails } from './components/userDetails/UserDetails'
-import './index.css'
+import { Chat } from "./components/chat/Chat";
+import LoginPage from "./components/login/LoginPage";
+import Notification from "./components/notifications/Notification";
+import { SideBar } from "./components/sidebar/SideBar";
+import { UserDetails } from "./components/userDetails/UserDetails";
+import "./index.css";
 
 const App = () => {
+  const user = true;
   return (
-    <div className='container1'>
-      <SideBar />
-      <Chat />
-      <UserDetails />
-    </div>
-  )
-}
+    <div className="container1">
+      {user ? (
+        <>
+          <SideBar />
+          <Chat />
+          <UserDetails />
+        </>
+      ) : (
+        <LoginPage />
+      )}
 
-export default App
+      <Notification />
+    </div>
+  );
+};
+
+export default App;
